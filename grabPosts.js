@@ -1,5 +1,6 @@
 const puppeteer = require("puppeteer");
 require("dotenv").config();
+
 module.exports = async function grabPostsFrom(profiles) {
   let browser = await puppeteer.launch({ headless: false });
   let page = await browser.newPage();
@@ -17,14 +18,9 @@ module.exports = async function grabPostsFrom(profiles) {
   await page.waitFor(2000);
   let generalPosts = [];
   for (const profile of profiles) {
-    await page.goto(`https://www.instagram.com/${profile}`);
-    await page.waitFor(400);
-    page.waitFor(2000);
-    await page.click("input[type='text']");
-    await page.keyboard.type(profile);
-    await page.waitFor(2000);
-    await page.click(".-qQT3");
-    await page.waitFor(2000);
+    await page.goto(`https://www.instagram.com/${profile}/`, {
+      waitUntil: "networkidle2",
+    });
 
     const postsFromProfile = await page.evaluate(async () => {
       const nodeList = document.querySelectorAll("article img");
