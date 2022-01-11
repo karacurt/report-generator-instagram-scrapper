@@ -37,7 +37,7 @@ async function makeppt(postsDownloaded) {
     }
   });
 
-  await pptx.save(`./report.pptx`);
+  await pptx.save(`./report-${new Date().toDateString()}.pptx`);
 }
 
 module.exports = { makeppt };
