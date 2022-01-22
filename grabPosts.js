@@ -26,19 +26,25 @@ module.exports = async function grabPostsFrom(profiles) {
       const nodeList = document.querySelectorAll("article img");
       const lineArray = Array.from(nodeList);
       const posts = [];
-      lineArray.forEach((imgPost) => {
+      const linksNode = document.querySelectorAll("article a");
+      const linksArray = Array.from(linksNode);
+
+      lineArray.forEach((imgPost, index) => {
         let a = "";
         a = a + imgPost.srcset;
         const img = a.split(",")[4].split(" ")[0];
         const description = imgPost.alt;
         console.log(img);
         console.log(description);
+        console.log(linksArray[index].href);
         const post = {
           img,
           description,
+          link: linksArray[index].href,
         };
         posts.push(post);
       });
+
       return posts;
     });
     generalPosts = generalPosts.concat(postsFromProfile);

@@ -49,11 +49,12 @@ async function main(profiles) {
 
   /**
    * @notice put in MM-DD-YYYY format
+   * @param posts: json with posts
    * @param from: string, optional - default: last week
    * @param until: string, optional - default: today
    * @param to: string, optional - default: imgs
    * */
-  const postsDownloaded = await downloadImages(posts, "12-17-2021");
+  const postsDownloaded = await downloadImages(posts, "01-10-2022");
 
   /**
    * @dev uncomment the following line to save posts to a json file

@@ -37,6 +37,7 @@ const downloadImages = async (posts, from, until, to) => {
     postsDownloaded.push({
       img: fileName,
       description: post.description,
+      link: post.link,
     });
   }
   return postsDownloaded;

@@ -16,7 +16,9 @@ async function makeppt(postsDownloaded) {
           slide
             .addText((text) => {
               text
-                .value(postsDownloaded[i].description)
+                .value(
+                  `${postsDownloaded[i].description} \n link: ${postsDownloaded[i].link}`
+                )
                 .x(200)
                 .y(90 * pos + textpos)
                 .cx(500);
